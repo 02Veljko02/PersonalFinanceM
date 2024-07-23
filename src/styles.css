@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Reset */
+/* Resetovanje osnovnih stilova za sve elemente */
+
+/* Uklanjanje marginama i paddinga */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    font-family: proxima-nova, sans-serif; /* Postavi osnovnu font-family za celokupnu stranicu */
+    line-height: 1.5; /* Postavi osnovnu visinu linije */
+  }
+  
+  /* Postavljanje box-sizing za sve elemente */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Uklanjanje podrazumevanih stilova za listu */
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /* Uklanjanje podrazumevanih stilova za linkove */
+  a {
+    text-decoration: none; /* Ukloni podrazumevani donji okvir za linkove */
+    color: inherit; /* Nasledi boju iz roditeljskog elementa */
+  }
+  
+  /* Uklanjanje podrazumevanih stilova za tabele */
+  table {
+    border-collapse: collapse; /* Spajanje granica tabela */
+    border-spacing: 0; /* Uklanjanje razmaka između ćelija */
+  }
+  
+  /* Uklanjanje podrazumevanih stilova za forme */
+  input,
+  button,
+  select,
+  textarea {
+    border: none;
+    outline: none; /* Ukloni okvir kada je fokusiran */
+    font-family: inherit; /* Nasledi font-family iz roditeljskog elementa */
+  }
+  
+  
+  
