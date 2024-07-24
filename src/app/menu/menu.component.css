@@ -1,15 +1,33 @@
 .side-nav {
-  position: absolute;
+  position: fixed;
   width: 250px;
-  height: 100vh;
+  height: 100%;
   background-color: #ffffff;
   padding: 15px;
   padding-top: 0px;
   padding-bottom: 0px;
   top: 0; 
   left: 0; 
-  /* overflow: auto; */
+  bottom: 0;
+  overflow: auto;
   z-index: 100;
+}
+
+.side-nav::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.side-nav::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px; 
+}
+
+.side-nav::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.side-nav::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
 }
 
 .nav-header img {
@@ -41,6 +59,11 @@
   margin-right: 10px;
   width: 20px; 
   height: 20px; 
+}
+.nav-logout {
+  bottom: 0;
+  border-top: 1px solid #ccc; 
+  justify-content: center; 
 }
 
 @media (max-width: 768px) {
