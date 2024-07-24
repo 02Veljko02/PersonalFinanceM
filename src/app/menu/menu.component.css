@@ -8,7 +8,8 @@
   padding-bottom: 0px;
   top: 0; 
   left: 0; 
-  overflow: auto;
+  /* overflow: auto; */
+  z-index: 100;
 }
 
 .nav-header img {

@@ -8,7 +8,13 @@ html, body {
     font-family: proxima-nova, sans-serif; 
     background-color: #edece3;
     overflow: auto;
+    
   }
+  body {
+    padding-top: 50px; /* Visina zaglavlja */
+    margin-left: 250px; /* Širina bočne navigacije */
+}
+  
   
   /* Postavljanje box-sizing za sve elemente */
   *,

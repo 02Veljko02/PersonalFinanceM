@@ -112,7 +112,7 @@
   position: absolute;
   right: 0; /* Da se pojavi levo od dropdown linka */
   top: 100%;
-  background-color: #1a0470;
+  background-color: #140452;
   min-width: fit-content;
   z-index: 1;
 }
