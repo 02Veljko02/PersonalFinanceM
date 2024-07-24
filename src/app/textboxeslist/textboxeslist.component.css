@@ -39,7 +39,7 @@
 .time {
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  padding-top: 25px;
 }
 
 .time-period {
@@ -82,7 +82,7 @@
 .custom-menu {
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  padding-top: 25px;
   gap: 10px;
 }
 
@@ -131,3 +131,82 @@
 .custom-menu .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.serching {
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  gap: 10px;
+  
+}
+
+.serching a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.serching .beneficiary {
+  display: flex;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #4dc6e3;
+  border-bottom: 1px solid #4dc6e3;
+  text-align: left;
+  font-size: 14px;
+}
+
+.serching .search {
+  border: 1px solid #333;
+  border-color: #7e7373;
+  padding: 5px;
+  margin-left: 0;
+  color: #7e7373;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.serching .search img {
+  margin-left: 10px; /* Razmak između teksta i slike */
+  width: 20px;
+  height: 20px;
+}
+
+.serching .border-bottom {
+  border-bottom: 1px solid #7e7373;
+  padding-bottom: 5px; /* Razmak između teksta i donje granice */
+}
+
+.filter{
+  display: flex;
+  flex-direction: column;
+  padding-top: 25px;
+  gap: 10px;
+}
+.filter-transaction {
+  display: flex;
+  align-items: center; /* Poravnava sadržaj vertikalno u sredini */
+  justify-content: center; /* Poravnava sadržaj horizontalno u sredini */
+  padding: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: proxima-nova, sans-serif;
+  background-color: #78a000;
+  text-align: center; /* Opcionalno: poravnava tekst unutar samog elementa, ako je element širi od teksta */
+}
+.clear {
+  display: flex;
+  align-items: center; /* Poravnava sadržaj vertikalno u sredini */
+  justify-content: center; /* Poravnava sadržaj horizontalno u sredini */
+  padding: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: proxima-nova, sans-serif;
+  background-color: #4dc6e3;
+  text-align: center;
+}
+
+
+
