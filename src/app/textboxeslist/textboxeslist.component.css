@@ -1,5 +1,5 @@
 .textboxeslist {
-  position: fixed;
+  position: absolute;
   top: 80px;
   right: 20px;
   width: 250px;
@@ -153,6 +153,7 @@
   border-bottom: 1px solid #4dc6e3;
   text-align: left;
   font-size: 14px;
+  font-family: proxima-nova, sans-serif;
 }
 
 .serching .search {

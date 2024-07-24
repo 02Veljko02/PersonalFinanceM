@@ -1,5 +1,5 @@
 .side-nav {
-  position: fixed;
+  position: absolute;
   width: 250px;
   height: 100vh;
   background-color: #ffffff;
@@ -31,7 +31,7 @@
   padding: 10px;
   color: #7e7373;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 12px; 
   font-family: proxima-nova, sans-serif;
   font-weight: bold;
   margin-bottom: 10px;
