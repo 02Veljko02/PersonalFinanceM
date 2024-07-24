@@ -1,0 +1,133 @@
+.textboxeslist {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 250px;
+  height: auto;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.textboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.textbox {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #4dc6e3;
+  text-decoration: none;
+  font-size: 14px;
+  font-family: proxima-nova, sans-serif;
+  background-color: #ffffff;
+}
+
+.textbox.active {
+  background-color: #4dc6e3;
+  color: #ffffff;
+}
+
+.icons {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+}
+
+.time-period {
+  margin-left: 0;
+  padding: 5px 0;
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+  text-align: left;
+}
+
+.period {
+  border-bottom: 1px solid #333;
+  margin-bottom: 5px;
+  color: #4dc6e3;
+  border-bottom-color: #4dc6e3;
+}
+
+.left-align {
+  margin-left: 0;
+  color: #7e7373;
+}
+
+.date {
+  border: 1px solid #333;
+  border-color: #7e7373;
+  padding: 5px;
+  margin-left: 0;
+  color: #4dc6e3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-period.date img {
+  width: 20px;
+  height: 20px;
+}
+
+
+.custom-menu {
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+  gap: 10px;
+}
+
+.custom-menu .link {
+  display: flex;
+  padding: 5px 0;
+  text-decoration: none;
+  color: #4dc6e3;
+  border-bottom: 1px solid #4dc6e3;
+  text-align: left;
+  font-size: 14px;
+}
+
+.custom-menu .dropdown {
+  position: relative;
+}
+
+.custom-menu .dropdown .link {
+  background-color: #4dc6e3;
+  color: white;
+  border-bottom: none;
+  padding: 5px;
+}
+
+.custom-menu .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0; /* Da se pojavi levo od dropdown linka */
+  top: 100%;
+  background-color: #1a0470;
+  min-width: fit-content;
+  z-index: 1;
+}
+
+.custom-menu .dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+}
+
+.custom-menu .dropdown-content a:hover {
+  background-color: #555;
+}
+
+.custom-menu .dropdown:hover .dropdown-content {
+  display: block;
+}

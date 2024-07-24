@@ -1,14 +1,13 @@
-/* CSS Reset */
+CSS Reset
 /* Resetovanje osnovnih stilova za sve elemente */
 
 /* Uklanjanje marginama i paddinga */
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow-y: auto;
-    font-family: proxima-nova, sans-serif; /* Postavi osnovnu font-family za celokupnu stranicu */
-    line-height: 1.5; /* Postavi osnovnu visinu linije */
+    font-family: proxima-nova, sans-serif; 
+    background-color: #edece3;
+    overflow: auto;
   }
   
   /* Postavljanje box-sizing za sve elemente */
