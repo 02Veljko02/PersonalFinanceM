@@ -1,0 +1,91 @@
+.center-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 650px;
+    box-sizing: border-box;
+    margin-left: 50px;
+    margin-top: 0;
+    margin-right: 30px;
+  }
+  
+  .inner-div {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .financial-info {
+    height: 50px;
+    /* border-bottom: 3px solid #4dc6e3; */
+    display: flex;
+    padding-left: 0;
+    align-items: flex-end;
+    color: #4dc6e3;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .transaction-info {
+    height: 100px;
+    background-color: #4dc6e3;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px; /* Razmak s leva i desna */
+  }
+  
+  .icon {
+    margin-right: 10px;
+  }
+  
+  .icon img {
+    width: 60px; /* Širina slike */
+    height: 60px; /* Visina slike */
+    border-radius: 50%; /* Kružni oblik */
+    object-fit: cover; /* Obrezivanje slike */
+    border: 4px solid #fff; /* Beli okvir */
+  }
+  
+  .texts {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .text-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Poravnanje teksta sa leva */
+    color: #fff;
+  }
+  
+  .text-left .name {
+    font-size: 18px;
+    /* font-weight: bold; */
+  }
+  
+  .text-left .account-number {
+    font-size: 12px;
+    color: #94efff;
+  }
+  
+  .text-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #fff;
+  }
+  
+  .text-right .amount {
+    font-size: 15px;
+    /* font-weight: bold; */
+  }
+  .text-right .available {
+    font-size: 10px;
+    color: #94efff;
+  }
+  
