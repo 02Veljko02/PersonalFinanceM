@@ -89,3 +89,60 @@
     color: #94efff;
   }
   
+  .horizontal-divs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .horizontal-div {
+    flex: 1;
+    text-align: center;
+    background-color: #003366; /* Tamno plava boja pozadine */
+    border-right: 1px solid #fff; /* Beli border od 1px */
+    color: #fff; /* Bela boja teksta */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  .horizontal-div:last-child {
+    border-right: none;
+  }
+  /* .horizontal-div:hover {
+    border-bottom: 3px solid #4dc6e3;
+    color: #4dc6e3;
+  } */
+  .fixed-hover {
+    border-bottom: 3px solid #4dc6e3;
+    color: #4dc6e3;
+}
+  
+  .select-menu {
+    background-color: #4dc6e3;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+  }
+  
+  .menu-text {
+    font-size: 11px;
+    font-weight: bold;
+    margin-left:auto;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 20px;
+    padding-left: 10px;
+  }
+  
+  .icons img {
+    width: 25px;
+    height: 25px;
+  }
