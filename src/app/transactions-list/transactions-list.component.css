@@ -6,7 +6,7 @@
     width: 100%;
     max-width: 650px;
     box-sizing: border-box;
-    margin-left: 50px;
+    margin-left:300px;
     margin-top: 0;
     margin-right: 30px;
   }
@@ -145,4 +145,22 @@
   .icons img {
     width: 25px;
     height: 25px;
+  }
+  .categorize{
+    border-bottom: 1px solid black;
+    background-color: #fff;
+    height: 40px;
+    display: flex; /* Fleksibilno raspoređivanje sadržaja */
+    align-items: center; /* Vertikalno centriranje sadržaja */
+    justify-content: flex-start;
+  }
+  .categorize-textbox{
+    background-color: #4dc6e3; 
+    color: #fff; 
+    padding: 5px 10px; 
+    font-size: 11px;
+    margin-left: 30px;
+    height: 25px; 
+    display: flex; 
+    align-items: center;
   }

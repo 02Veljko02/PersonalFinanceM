@@ -1,43 +1,51 @@
 <div class="center-div">
-    <div class="inner-div financial-info">
-      FINANCIAL OVERVIEW
+  <div class="inner-div financial-info">
+    FINANCIAL OVERVIEW
+  </div>
+  <div class="inner-div transaction-info">
+    <div class="icon">
+      <img src="assets/images/Profile.jpg" alt="Icon">
     </div>
-    <div class="inner-div transaction-info">
-      <div class="icon">
-        <img src="assets/images/Profile.jpg" alt="Icon">
+    <div class="texts">
+      <div class="text-left">
+        <div class="name">Veljko Jovkovic</div>
+        <div class="account-number">4587 30458 25084</div>
       </div>
-      <div class="texts">
-        <div class="text-left">
-          <div class="name">Veljko Jovkovic</div>
-          <div class="account-number">4587 30458 25084</div>
-        </div>
-        <div class="text-right">
-          <div class="amount">12,340.000,00 RSD</div>
-          <div class="available">AVAILABLE BALANCE</div>
-        </div>
+      <div class="text-right">
+        <div class="amount">12,340.000,00 RSD</div>
+        <div class="available">AVAILABLE BALANCE</div>
       </div>
     </div>
-    
-    <div class="inner-div horizontal-divs">
-        <div class="horizontal-div fixed-hover">EXECUTED</div>
-        <div class="horizontal-div">REJECTED</div>
-        <div class="horizontal-div">FUTURE</div>
-        <div class="horizontal-div">DRAFT</div>
-        <div class="horizontal-div">PENDING</div>
-      </div>
-    
-      <div class="inner-div select-menu">
-        <span class="menu-text">CHOOSE VIEW:</span>
-        <div class="icons">
-          <img src="assets/images/list.png" alt="list">
-          <img src="assets/images/space_dashboard.png" alt="space">
-          <img src="assets/images/calendar2.png" alt="calendar">
-          <img src="assets/images/timeline.png" alt="timeline">
-          <img src="assets/images/language.png" alt="language">
-          <img src="assets/images/target.png" alt="target">
-          <img src="assets/images/leaderboard.png" alt="leaderboard">
-        </div>
-      </div>
-
   </div>
   
+  <div class="inner-div horizontal-divs">
+      <div class="horizontal-div fixed-hover">EXECUTED</div>
+      <div class="horizontal-div">REJECTED</div>
+      <div class="horizontal-div">FUTURE</div>
+      <div class="horizontal-div">DRAFT</div>
+      <div class="horizontal-div">PENDING</div>
+    </div>
+  
+    <div class="inner-div select-menu">
+      <span class="menu-text">CHOOSE VIEW:</span>
+      <div class="icons">
+        <img src="assets/images/list.png" alt="list">
+        <img src="assets/images/space_dashboard.png" alt="space">
+        <img src="assets/images/calendar2.png" alt="calendar">
+        <img src="assets/images/timeline.png" alt="timeline">
+        <img src="assets/images/language.png" alt="language">
+        <img src="assets/images/target.png" alt="target">
+        <img src="assets/images/leaderboard.png" alt="leaderboard">
+      </div>
+    </div>
+
+    <div class="inner-div categorize">
+      <div class="categorize-textbox">Categorize</div>
+    </div>
+
+    <div class="inner-div" *ngFor="let transaction of transactions">
+      <app-transaction [transaction]="transaction"></app-transaction>
+    </div>
+    
+
+</div>
