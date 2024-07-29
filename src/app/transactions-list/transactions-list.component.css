@@ -9,6 +9,7 @@
     margin-left:300px;
     margin-top: 0;
     margin-right: 30px;
+    padding-bottom: 100px;
   }
   
   .inner-div {
@@ -164,3 +165,23 @@
     display: flex; 
     align-items: center;
   }
+  .export-list{
+    background-color: #fff;
+    color: #7e7373;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-between;
+    height: 131px;
+  }
+  .export-icons{
+    display: flex;
+    gap: 20px;
+    padding-left: 10px;
+  }
+  .export-icons img{
+    height: 35px;
+    width: 35px;
+  }
+  

@@ -2,26 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { TransactionComponent } from './transaction/transaction.component';
+import { ApiService } from '../../services/api.service';
+import Transaction from '../models/transaction';
 
 @Component({
   selector: 'app-transactions-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, TransactionComponent],
+  imports: [CommonModule, TransactionComponent],
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.css']
 })
 export class TransactionsListComponent implements OnInit {
-  transactions: any[] = [];
+  transactions: Transaction[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.http.get<any>('http://127.0.0.1:4010/transactions?page=271&page-size=401&sort-by=repellat&sort-order=asc')
-      .subscribe(data => {
-        this.transactions = data.items; 
-        console.log(this.transactions);
-      });
+    this.apiService.getTransactions().subscribe(
+      (      data: { items: Transaction[]; }) => 
+      this.transactions = data.items
+    )
+
+    this.transactions.sort((a, b) => {
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
   }
+  
 }
-
-

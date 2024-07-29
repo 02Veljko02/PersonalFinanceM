@@ -7,7 +7,14 @@
       </div>
       <div class="beneficiary-name">{{ transaction['beneficiary-name'] }}</div>
       <div class="date">{{ transaction.date }}</div>
-      <div class="description">{{ transaction.description }}</div>
+      <button
+  class="description"
+  [disabled]="transaction.catcode"
+  [ngClass]="{ 'fixed': transaction.catcode }"
+  (click)="navigateToCategorization()"
+>
+  {{ transaction.catcode ? transaction.catcode : 'Add category' }}
+</button>
     </div>
     <div class="transaction-right">
       <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>

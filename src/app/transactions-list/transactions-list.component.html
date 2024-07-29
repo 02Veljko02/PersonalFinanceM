@@ -40,12 +40,19 @@
     </div>
 
     <div class="inner-div categorize">
-      <div class="categorize-textbox">Categorize</div>
+      <div class="categorize-textbox">Categorize multiple transactions</div>
     </div>
 
     <div class="inner-div" *ngFor="let transaction of transactions">
       <app-transaction [transaction]="transaction"></app-transaction>
     </div>
     
+    <div class="inner-div export-list">
+      <div class="export-text">EXPORT LIST OF TRANSACTIONS AS:</div>
+      <div class="export-icons">
+        <img src="assets/images/pdf.png" alt="pdf">
+        <img src="assets/images/csv.png" alt="csv">
+      </div>
+    </div>
 
 </div>
