@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TransactionComponent } from './transaction/transaction.component';
 import { ApiService } from '../../services/api.service';
 import Transaction from '../models/transaction';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transactions-list',
@@ -15,7 +16,7 @@ import Transaction from '../models/transaction';
 export class TransactionsListComponent implements OnInit {
   transactions: Transaction[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.getTransactions().subscribe(
@@ -24,8 +25,13 @@ export class TransactionsListComponent implements OnInit {
     )
 
     this.transactions.sort((a, b) => {
-      return new Date(a.date).getTime() - new Date(b.date).getTime();
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
+    
   }
+  navigateToMultipleCategorization(){
+    this.router.navigate(['multiple-categorization'])
+  }
+
   
 }
