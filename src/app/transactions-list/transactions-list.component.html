@@ -50,18 +50,34 @@
     </div>
   </div>
 
-  <div class="inner-div" *ngFor="let transaction of transactions">
+  <!-- <div class="inner-div" *ngFor="let transaction of transactions">
     <app-transaction 
     [transaction]="transaction" 
     [isSelectingMultipleTransactions]="isSelectingMultipleTransactions" 
     (checkboxChange)="handleTransactionSelection($event)">
-  </app-transaction>  </div>
+  </app-transaction>  </div> -->
   
-  <div class="inner-div export-list">
+  <!-- <div class="inner-div export-list">
     <div class="export-text">EXPORT LIST OF TRANSACTIONS AS:</div>
     <div class="export-icons">
       <img src="assets/images/pdf.png" alt="pdf">
       <img src="assets/images/csv.png" alt="csv">
     </div>
+  </div> -->
+
+  <div class="inner-div" *ngFor="let transaction of paginatedTransactions">
+    <app-transaction 
+      [transaction]="transaction" 
+      [isSelectingMultipleTransactions]="isSelectingMultipleTransactions" 
+      (checkboxChange)="handleTransactionSelection($event)">
+    </app-transaction>
   </div>
+  
+  <!-- Kontrole za paginaciju -->
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{currentPage}} od {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
 </div>
