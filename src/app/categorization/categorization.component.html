@@ -1,32 +1,32 @@
 <div class="categorization-container">
-    <div class="categorization-box">
-      <div class="categorization-header">
-        Choose chategory:
+  <div class="categorization-box">
+    <div class="categorization-header">
+      Choose category:
+    </div>
+    <div class="categorization-content">
+      <div class="white-background-text">
+        Transaction ID: {{ transactionId }}
       </div>
-      <div class="categorization-content">
-        <div class="white-background-text">
-          
-        </div>
-        <div class="dropdowns">
-          <label for="category">Category:</label>
-          <select id="category" name="category" [(ngModel)]="category">
-            <option *ngFor="let category of categories">
-              {{category.name}}
+      <div class="dropdowns">
+        <label for="category">Category:</label>
+        <select id="category" name="category" [(ngModel)]="mainCategory" (change)="onCategoryChange()">
+          <option value="">Select a category</option>
+          <option *ngFor="let mainCategory of mainCategories" [value]="mainCategory.code">
+            {{ mainCategory.name }}
           </option>
-          </select>
-          <label for="subcategory">Subcategory:</label>
-          <select id="subcategory" name="subcategory" [(ngModel)]="subcategory">
-            <option *ngFor="let subcategory of subcategories">
-              {{subcategory.name}}
+        </select>
+        <label for="subcategory">Subcategory:</label>
+        <select id="subcategory" name="subcategory" [(ngModel)]="subcategory">
+          <option value="">Select a subcategory</option>
+          <option *ngFor="let subcat of subcategories" [value]="subcat.code">
+            {{ subcat.name }}
           </option>
-            <!-- Opcije za potkategorije -->
-          </select>
-        </div>
-      </div>
-      <div class="categorization-footer">
-        <button type="button" (click)="backToMain()">Cancel</button>
-        <button type="button" (click)="selectCategories()">Apply</button>
+        </select>
       </div>
     </div>
+    <div class="categorization-footer">
+      <button type="button" (click)="backToMain()">Cancel</button>
+      <button type="button" (click)="applyCategory()" [disabled]="!mainCategory && !subcategory">Apply</button>
+    </div>
   </div>
-  
+</div>

@@ -19,40 +19,49 @@
   </div>
   
   <div class="inner-div horizontal-divs">
-      <div class="horizontal-div fixed-hover">EXECUTED</div>
-      <div class="horizontal-div">REJECTED</div>
-      <div class="horizontal-div">FUTURE</div>
-      <div class="horizontal-div">DRAFT</div>
-      <div class="horizontal-div">PENDING</div>
-    </div>
+    <div class="horizontal-div fixed-hover">EXECUTED</div>
+    <div class="horizontal-div">REJECTED</div>
+    <div class="horizontal-div">FUTURE</div>
+    <div class="horizontal-div">DRAFT</div>
+    <div class="horizontal-div">PENDING</div>
+  </div>
   
-    <div class="inner-div select-menu">
-      <span class="menu-text">CHOOSE VIEW:</span>
-      <div class="icons">
-        <img src="assets/images/list.png" alt="list">
-        <img src="assets/images/space_dashboard.png" alt="space">
-        <img src="assets/images/calendar2.png" alt="calendar">
-        <img src="assets/images/timeline.png" alt="timeline">
-        <img src="assets/images/language.png" alt="language">
-        <img src="assets/images/target.png" alt="target">
-        <img src="assets/images/leaderboard.png" alt="leaderboard">
-      </div>
+  <div class="inner-div select-menu">
+    <span class="menu-text">CHOOSE VIEW:</span>
+    <div class="icons">
+      <img src="assets/images/list.png" alt="list">
+      <img src="assets/images/space_dashboard.png" alt="space">
+      <img src="assets/images/calendar2.png" alt="calendar">
+      <img src="assets/images/timeline.png" alt="timeline">
+      <img src="assets/images/language.png" alt="language">
+      <img src="assets/images/target.png" alt="target">
+      <img src="assets/images/leaderboard.png" alt="leaderboard">
     </div>
+  </div>
 
-    <div class="inner-div categorize">
-      <button class="categorize-textbox" (click)="navigateToMultipleCategorization()">Categorize multiple transactions</button>
+  <div class="inner-div categorize">
+    <button class="categorize-textbox" (click)="toggleSelectionMode()">
+      Categorize multiple transactions
+    </button>
+    <div *ngIf="isSelectingMultipleTransactions" class="multiple-selection-info">
+      <span>Please select multiple categories</span>
+      <button class="ok-button" (click)="navigateToCategorization()">OK</button>
+      <button class="cancel-button" (click)="toggleSelectionMode()">Cancel</button>
     </div>
+  </div>
 
-    <div class="inner-div" *ngFor="let transaction of transactions">
-      <app-transaction [transaction]="transaction"></app-transaction>
+  <div class="inner-div" *ngFor="let transaction of transactions">
+    <app-transaction 
+    [transaction]="transaction" 
+    [isSelectingMultipleTransactions]="isSelectingMultipleTransactions" 
+    (checkboxChange)="handleTransactionSelection($event)">
+  </app-transaction>  </div>
+  
+  <div class="inner-div export-list">
+    <div class="export-text">EXPORT LIST OF TRANSACTIONS AS:</div>
+    <div class="export-icons">
+      <img src="assets/images/pdf.png" alt="pdf">
+      <img src="assets/images/csv.png" alt="csv">
     </div>
-    
-    <div class="inner-div export-list">
-      <div class="export-text">EXPORT LIST OF TRANSACTIONS AS:</div>
-      <div class="export-icons">
-        <img src="assets/images/pdf.png" alt="pdf">
-        <img src="assets/images/csv.png" alt="csv">
-      </div>
-    </div>
-
+  </div>
 </div>

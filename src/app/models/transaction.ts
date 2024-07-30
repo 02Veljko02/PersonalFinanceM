@@ -8,5 +8,6 @@ export default class Transaction {
     currency: string;
     kind: string;
     catcode: string;
+    category:any;
   }
   

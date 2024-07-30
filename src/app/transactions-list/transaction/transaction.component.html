@@ -1,26 +1,28 @@
 <div class="transaction-container">
-  <input type="checkbox" class="transaction-checkbox">
-    <div class="transaction-left">
-      <div class="id">ID {{ transaction.id }}</div>
-      <div class="direction">
-        <img *ngIf="transaction.direction === 'd'" src="assets/images/south.png" alt="south" class="direction-icon">
-      <img *ngIf="transaction.direction === 'c'" src="assets/images/north.png" alt="north" class="direction-icon">
-      </div>
-      <div class="beneficiary-name">{{ transaction['beneficiary-name'] }}</div>
-      <div class="date">{{ transaction.date }}</div>
-      <button
-  class="description"
-  [disabled]="transaction.catcode"
-  [ngClass]="{ 'fixed': transaction.catcode }"
-  (click)="navigateToCategorization()"
->
-  {{ transaction.catcode ? transaction.catcode : 'Add category' }}
-</button>
-    </div>
-    <div class="transaction-right">
-      <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
-      <div class="kind">{{ transaction.kind }}</div>
-    </div>
+  <div *ngIf="isSelectingMultipleTransactions">
+    <input 
+      type="checkbox" 
+      class="transaction-checkbox"
+      (change)="onCheckboxChange($event)">
   </div>
-
-  
+  <div class="transaction-left">
+    <div class="id">ID {{ transaction.id }}</div>
+    <div class="direction">
+      <img *ngIf="transaction.direction === 'd'" src="assets/images/south.png" alt="south" class="direction-icon">
+      <img *ngIf="transaction.direction === 'c'" src="assets/images/north.png" alt="north" class="direction-icon">
+    </div>
+    <div class="beneficiary-name">{{ transaction['beneficiary-name'] }}</div>
+    <div class="date">{{ transaction.date }}</div>
+    <button
+      class="description"
+      [disabled]="transaction.catcode"
+      [ngClass]="{ 'fixed': transaction.catcode }"
+      (click)="navigateToCategorization()">
+      {{ transaction.category ? transaction?.category?.name : 'Add category' }}
+    </button>
+  </div>
+  <div class="transaction-right">
+    <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
+    <div class="kind">{{ transaction.kind }}</div>
+  </div>
+</div>

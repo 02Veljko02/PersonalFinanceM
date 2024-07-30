@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -11,13 +11,18 @@ import { Router } from '@angular/router';
 })
 export class TransactionComponent {
   @Input() transaction: any;
+  @Input() isSelectingMultipleTransactions: boolean = false;
+  @Output() checkboxChange = new EventEmitter<{ id: string, checked: boolean }>();
 
   constructor(private router: Router) {}
 
   navigateToCategorization() {
-    localStorage.setItem("transaction", JSON.stringify(this.transaction));
+    localStorage.setItem("transactionId", this.transaction.id);
     this.router.navigate(['categorization']);
   }
-  
-  }
 
+  onCheckboxChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.checkboxChange.emit({ id: this.transaction.id, checked: input.checked });
+  }
+}
