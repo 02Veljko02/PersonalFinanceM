@@ -38,14 +38,9 @@ export class SplitCategorizationComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      const transactionIdsParam = params['transactionIds'];
-      if (transactionIdsParam) {
-        this.transactionId = transactionIdsParam.split(',')[0]; // Ako imate samo jedan ID
-      } else {
         const transaction = JSON.parse(localStorage.getItem('transaction') || '{}');
         this.transactionId = transaction.id;
         this.transaction = transaction; // Učitajte celu transakciju
-      }
     });
   
     this.apiService.getCategories().subscribe(

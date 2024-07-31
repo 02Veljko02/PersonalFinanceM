@@ -49,7 +49,6 @@ export class CategorizationComponent implements OnInit {
       (data: { items: Categorization[] }) => {
         this.categories = data.items;
         this.mainCategories = this.categories.filter(cat => !cat['parent-code']);
-        this.subcategories = this.categories;
       }
     );
   }
@@ -63,10 +62,10 @@ export class CategorizationComponent implements OnInit {
   applyCategory() {
     let categoryCode = '';
 
-    if (this.subcategory) {
-      categoryCode = this.subcategory;
-    } else if (this.mainCategory) {
+    if (this.mainCategory) {
       categoryCode = this.mainCategory;
+    } else if (this.subcategory) {
+      categoryCode = this.subcategory;
     } else {
       alert('Please select a category or subcategory.');
       return;
