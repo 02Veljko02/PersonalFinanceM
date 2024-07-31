@@ -12,7 +12,7 @@
   align-items: flex-start;
   flex: 1;
   margin: 7px;
-  margin-left: 30px;;
+  margin-left: 30px;
 }
 
 .transaction-right {
@@ -31,26 +31,34 @@
   font-size: 9px;
   color: #4dc6e3; 
 }
+
 .direction {
-  
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+}
 
 .direction-icon {
-  width: 20px; /* Širina slike */
-  height: 20px; /* Visina slike */
-  margin-right: 5px; /* Razmak između slike i teksta */
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
-.beneficiary-name{
+
+.beneficiary-name {
   font-size: 17px;
   color: #4dc6e3; 
 }
-.date{
+
+.date {
   font-size: 11px;
   color: #7e7373; 
 }
-.description{
+
+.description-container {
+  display: flex;
+  align-items: center;
+}
+
+.description {
   background-color: #4dc6e3;
   color: #fff;
   font-size: 11px;
@@ -62,22 +70,31 @@
   align-items: center;
 }
 
+.empty-div {
+  background-color: #4dc6e3;
+  color: #fff;
+  font-size: 11px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 5px;
+  height: 25px; 
+  display: flex; 
+  align-items: center;
+}
+
+.empty-div span {
+  white-space: nowrap;
+}
+
 .amount {
   font-size: 20px;
   color: #4dc6e3; 
 }
+
 .kind {
   font-size: 14px;
   color: #7e7373; 
   text-transform: uppercase;
-}
-.description {
-  background-color: #7e7373;
-  color: white;
-}
-
-.description.fixed {
-  background-color: #4dc6e3; 
 }
 
 .transaction-checkbox {

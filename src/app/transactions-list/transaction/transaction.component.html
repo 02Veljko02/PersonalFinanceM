@@ -13,19 +13,25 @@
     </div>
     <div class="beneficiary-name">{{ transaction['beneficiary-name'] }}</div>
     <div class="date">{{ transaction.date }}</div>
-    <button
-      class="description"
-    
-      [ngClass]="{ 'fixed': transaction.catcode }"
-      (click)="navigateToCategorization()">
-      {{ transaction.category ? transaction?.category?.name : 'Add category' }}
-    </button>
+    <div class="description-container">
+      <button
+        class="description"
+        [ngClass]="{ 'fixed': transaction.catcode }"
+        (click)="navigateToCategorization()">
+        {{ transaction.category ? transaction?.category?.name : 'Add category' }}
+      </button>
+      <div class="empty-div">
+        <span *ngFor="let category of selectedCategories; let i = index">
+          {{ category }}<span *ngIf="i < selectedCategories.length - 1">, </span>
+        </span>
+      </div>
+    </div>
   </div>
   <div class="transaction-right">
     <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
     <div class="kind">{{ transaction.kind }}</div>
     <button class="split-transaction" (click)="navigateToSplit()">
-    Split Transaction
-  </button>
+      Split Transaction
+    </button>
   </div>
 </div>

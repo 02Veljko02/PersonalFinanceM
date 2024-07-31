@@ -77,27 +77,25 @@ export class SplitCategorizationComponent implements OnInit {
   }
 
   applyCategory() {
-    this.categorySections.forEach(section => {
-      let categoryCode = '';
-
-      if (section.subcategory) {
-        categoryCode = section.subcategory;
-      } else if (section.mainCategory) {
-        categoryCode = section.mainCategory;
-      }
-
-      if (categoryCode) {
-        this.apiService.updateTransactionsCategory(this.transactionIds, categoryCode).subscribe(
-          () => {
-            this.sharedService.notifyUpdate();
-          },
-          error => console.error('Error updating transactions category:', error)
-        );
-      }
+    const selectedCategories: string[] = this.categorySections.map(section => {
+      const mainCategory = this.categories.find(cat => cat.code === section.mainCategory);
+      const subcategory = this.categories.find(cat => cat.code === section.subcategory);
+      return subcategory ? subcategory.name : mainCategory ? mainCategory.name : '';
     });
-
+  
+    // Save selected categories to SharedService
+    if (this.transactionId) {
+      this.sharedService.setSelectedCategories(this.transactionId, selectedCategories);
+    }
+  
+    // Notify update
+    this.sharedService.notifyUpdate();
+  
+    // Navigate back to the main page
     this.router.navigate(['']);
   }
+  
+  
 
   backToMain() {
     this.router.navigate(['']);
