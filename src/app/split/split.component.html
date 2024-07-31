@@ -31,7 +31,7 @@
         </div>
         <button type="button" (click)="addNewCategorySection()">Add new category</button>
         <div class="categorization-footer">
-            <button type="button" (click)="backToMain()">Cancel</button>
+            <button type="button" class="cancel" (click)="backToMain()">Cancel</button>
             <button type="button" (click)="applyCategory()" [disabled]="!isFormValid()">Apply</button>
         </div>
     </div>

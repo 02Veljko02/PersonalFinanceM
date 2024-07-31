@@ -1,61 +1,90 @@
 .categorization-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .categorization-box {
-    width: 200px;
-    height: 250px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .categorization-header {
-    background-color: #4dc6e3;
-    color: white;
-    text-align: center;
-    padding: 5px 0;
-  }
-  
-  .categorization-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: center;
-  }
-  
-  .white-background-text {
-    text-align: center;
-    padding: 5px 0;
-    width: 100%;
-    color: #4dc6e3;
-    font-size: 10;
-  }
-  
-  .dropdowns {
-    margin-top: 10px;
-  }
-  
-  .dropdowns label,
-  .dropdowns select {
-    display: block;
-    width: 100%;
-    margin-bottom: 5px;
-  }
-  
-  .categorization-footer {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .categorization-footer button {
-    width: 45%;
-    padding: 5px 0;
-    background-color: #4dc6e3;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.categorization-box {
+  width: 200px; /* Početna širina */
+  min-height: 250px; /* Početna visina */
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 0; /* Oduzmi padding da header bude uz ivice */
+  padding: 10px;
+  box-sizing: border-box; /* Uključi border u ukupnu širinu i visinu */
+  position: relative; /* Omogući apsolutno pozicioniranje za header */
+  transition: all 0.3s ease; /* Glatka animacija za promene */;
+}
+
+.categorization-header {
+  background-color: #4dc6e3;
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+  position: absolute; /* Apsolutno pozicioniranje unutar roditelja */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px; /* Adjust as needed */
+  box-sizing: border-box; /* Uključi padding u visinu */
+}
+
+.categorization-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%; /* Osiguraj da sadržaj koristi celu širinu */
+  padding-top: 40px; /* Ostavlja prostor za header */
+}
+
+.white-background-text {
+  text-align: center;
+  padding: 5px 0;
+  width: 100%;
+  color: #4dc6e3;
+  font-size: 10px; /* Popravi veličinu fonta */
+}
+
+.dropdowns {
+  margin-top: 10px;
+}
+
+.dropdowns label,
+.dropdowns select {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.categorization-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categorization-footer .cancel-button {
+  width: 45%;
+  padding: 5px 0;
+  background-color: red; /* Boja za Cancel dugme */
+  color: white; /* Tekst boje */
+  border: none; /* Bez bordera */
+  cursor: pointer; /* Pokazivač za klik */
+}
+
+.categorization-footer .apply-button {
+  width: 45%;
+  padding: 5px 0;
+  background-color: #4dc6e3; /* Boja za Apply dugme */
+  color: white; /* Tekst boje */
+  border: none; /* Bez bordera */
+  cursor: pointer; /* Pokazivač za klik */
+}
+
+.categorization-footer button:disabled {
+  opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
+  cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
+}

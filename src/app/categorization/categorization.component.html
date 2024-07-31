@@ -1,11 +1,19 @@
 <div class="categorization-container">
-  <div class="categorization-box">
+  <div class="categorization-box" [ngClass]="{'expanded': transactionIds.length > 1}">
     <div class="categorization-header">
       Choose category:
     </div>
     <div class="categorization-content">
       <div class="white-background-text">
-        Transaction ID: {{ transactionId }}
+        <div *ngIf="transactionIds.length === 1">
+          Transaction ID: {{ transactionId }}
+        </div>
+        <div *ngIf="transactionIds.length > 1">
+          Transaction IDs:
+          <ul>
+            <li *ngFor="let id of transactionIds">{{ id }}</li>
+          </ul>
+        </div>
       </div>
       <div class="dropdowns">
         <label for="category">Category:</label>
@@ -25,8 +33,8 @@
       </div>
     </div>
     <div class="categorization-footer">
-      <button type="button" (click)="backToMain()">Cancel</button>
-      <button type="button" (click)="applyCategory()" [disabled]="!mainCategory && !subcategory">Apply</button>
+      <button type="button" class="cancel-button" (click)="backToMain()">Cancel</button>
+      <button type="button" class="apply-button" (click)="applyCategory()" [disabled]="!mainCategory && !subcategory">Apply</button>
     </div>
   </div>
 </div>

@@ -39,7 +39,9 @@ export class CategorizationComponent implements OnInit {
         this.transactionIds = transactionIdsParam.split(',');
       } else {
         this.transactionId = localStorage.getItem('transactionId');
-        this.transactionIds.push(this.transactionId);
+        if (this.transactionId) {
+          this.transactionIds.push(this.transactionId);
+        }
       }
     });
 
@@ -63,7 +65,7 @@ export class CategorizationComponent implements OnInit {
 
     if (this.subcategory) {
       categoryCode = this.subcategory;
-    } else if (this.mainCategories) {
+    } else if (this.mainCategory) {
       categoryCode = this.mainCategory;
     } else {
       alert('Please select a category or subcategory.');

@@ -13,6 +13,7 @@
     flex-direction: column;
     padding: 10px;
     margin-bottom: 10px;
+    position: relative; /* Add relative positioning for header positioning */
 }
 
 .categorization-header {
@@ -20,6 +21,11 @@
     color: white;
     text-align: center;
     padding: 5px 0;
+    position: absolute; /* Position the header absolutely */
+    top: 0; /* Align to the top of the box */
+    left: 0; /* Align to the left edge of the box */
+    right: 0; /* Align to the right edge of the box */
+    z-index: 1; /* Ensure header is on top of other content */
 }
 
 .categorization-content {
@@ -28,7 +34,7 @@
     align-items: center;
     flex-grow: 1;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 40px; /* Adjust margin to avoid overlap with header */
 }
 
 .white-background-text {
@@ -67,6 +73,10 @@
     cursor: pointer;
 }
 
+.categorization-footer button.cancel {
+    background-color: red; /* Set the cancel button to red */
+}
+
 button[type="button"] {
     margin-top: 10px;
     width: 100%;
@@ -75,3 +85,7 @@ button[type="button"] {
     border: none;
     cursor: pointer;
 }
+.categorization-footer button:disabled {
+    opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
+    cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
+  }
