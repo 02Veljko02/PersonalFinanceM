@@ -6,13 +6,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class SharedService {
   private updateSubject = new BehaviorSubject<void>(undefined);
-  private selectedCategoriesMapSubject = new BehaviorSubject<Map<string, string[]>>(new Map());
+  private selectedCategoriesMapSubject = new BehaviorSubject<Map<string, { categories: string[], amounts: number[] }>>(new Map());
 
   get update$(): Observable<void> {
     return this.updateSubject.asObservable();
   }
 
-  get selectedCategoriesMap$(): Observable<Map<string, string[]>> {
+  get selectedCategoriesMap$(): Observable<Map<string, { categories: string[], amounts: number[] }>> {
     return this.selectedCategoriesMapSubject.asObservable();
   }
 
@@ -20,13 +20,13 @@ export class SharedService {
     this.updateSubject.next();
   }
 
-  setSelectedCategories(transactionId: string, categories: string[]): void {
+  setSelectedCategories(transactionId: string, categories: string[], amounts: number[]): void {
     const currentMap = this.selectedCategoriesMapSubject.getValue();
-    currentMap.set(transactionId, categories);
+    currentMap.set(transactionId, { categories, amounts });
     this.selectedCategoriesMapSubject.next(new Map(currentMap));
   }
 
-  getSelectedCategories(transactionId: string): string[] {
-    return this.selectedCategoriesMapSubject.getValue().get(transactionId) || [];
+  getSelectedCategories(transactionId: string): { categories: string[], amounts: number[] } {
+    return this.selectedCategoriesMapSubject.getValue().get(transactionId) || { categories: [], amounts: [] };
   }
 }

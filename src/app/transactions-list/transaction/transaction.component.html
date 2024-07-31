@@ -15,14 +15,15 @@
     <div class="date">{{ transaction.date }}</div>
     <div class="description-container">
       <button
+        *ngIf="selectedCategories.length === 0"
         class="description"
         [ngClass]="{ 'fixed': transaction.catcode }"
         (click)="navigateToCategorization()">
         {{ transaction.category ? transaction?.category?.name : 'Add category' }}
       </button>
-      <div class="empty-div">
+      <div *ngIf="selectedCategories.length > 0" class="empty-div">
         <span *ngFor="let category of selectedCategories; let i = index">
-          {{ category }}<span *ngIf="i < selectedCategories.length - 1">, </span>
+          {{ category.name }}  ({{ category.amount }} USD)<span *ngIf="i < selectedCategories.length - 1">, </span>
         </span>
       </div>
     </div>

@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { SharedService } from '../../../services/shared.service';
 import { Subscription } from 'rxjs';
 
+interface CategoryWithAmount {
+  name: string;
+  amount: number;
+}
+
 @Component({
   selector: 'app-transaction',
   standalone: true,
@@ -15,18 +20,27 @@ export class TransactionComponent implements OnInit, OnDestroy {
   @Input() transaction: any;
   @Input() isSelectingMultipleTransactions: boolean = false;
   @Output() checkboxChange = new EventEmitter<{ id: string, checked: boolean }>();
-  selectedCategories: string[] = [];
+  
+  selectedCategories: CategoryWithAmount[] = [];
   private updateSubscription: Subscription;
 
   constructor(private router: Router, private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.updateSubscription = this.sharedService.update$.subscribe(() => {
-      this.selectedCategories = this.sharedService.getSelectedCategories(this.transaction.id);
+      const selected = this.sharedService.getSelectedCategories(this.transaction.id);
+      this.selectedCategories = selected.categories.map((cat, index) => ({
+        name: cat,
+        amount: selected.amounts[index]
+      }));
     });
 
-    // Initial load of selected categories
-    this.selectedCategories = this.sharedService.getSelectedCategories(this.transaction.id);
+    // Initial load of selected categories and amounts
+    const selected = this.sharedService.getSelectedCategories(this.transaction.id);
+    this.selectedCategories = selected.categories.map((cat, index) => ({
+      name: cat,
+      amount: selected.amounts[index]
+    }));
   }
 
   ngOnDestroy(): void {
@@ -41,7 +55,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
   }
 
   navigateToSplit() {
-    localStorage.setItem("transactionId", this.transaction.id);
+    localStorage.setItem("transaction", JSON.stringify(this.transaction));
     this.router.navigate(['split']);
   }
 
