@@ -1,3 +1,5 @@
+// split.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import Categorization from '../models/categorization';
@@ -22,19 +24,18 @@ interface CategorySection {
 export class SplitCategorizationComponent implements OnInit {
   categories: Categorization[] = [];
   subcategories: { [key: number]: Categorization[] } = {};
-  
   mainCategories: Categorization[] = [];
   transactionId: string | null = null;
   transactionIds: string[] = [];
-
   categorySections: CategorySection[] = [{ mainCategory: '', subcategory: '', amount: '' }];
+  selectedCategories: string[] = [];
 
   constructor(
-    private apiService: ApiService, 
-    private router: Router, 
+    private apiService: ApiService,
+    private router: Router,
     private route: ActivatedRoute,
     private sharedService: SharedService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -43,7 +44,9 @@ export class SplitCategorizationComponent implements OnInit {
         this.transactionIds = transactionIdsParam.split(',');
       } else {
         this.transactionId = localStorage.getItem('transactionId');
-        this.transactionIds.push(this.transactionId);
+        if (this.transactionId) {
+          this.transactionIds.push(this.transactionId);
+        }
       }
     });
 
@@ -77,24 +80,18 @@ export class SplitCategorizationComponent implements OnInit {
   }
 
   applyCategory() {
-    this.categorySections.forEach(section => {
-      let categoryCode = '';
-
+    this.selectedCategories = this.categorySections.map(section => {
       if (section.subcategory) {
-        categoryCode = section.subcategory;
+        return this.categories.find(cat => cat.code === section.subcategory)?.name || '';
       } else if (section.mainCategory) {
-        categoryCode = section.mainCategory;
+        return this.categories.find(cat => cat.code === section.mainCategory)?.name || '';
       }
+      return '';
+    }).filter(name => name);
 
-      if (categoryCode) {
-        this.apiService.updateTransactionsCategory(this.transactionIds, categoryCode).subscribe(
-          () => {
-            this.sharedService.notifyUpdate();
-          },
-          error => console.error('Error updating transactions category:', error)
-        );
-      }
-    });
+    if (this.transactionId) {
+      this.sharedService.setSelectedCategories(this.transactionId, this.selectedCategories);
+    }
 
     this.router.navigate(['']);
   }

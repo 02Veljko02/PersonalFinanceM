@@ -14,12 +14,11 @@
     <div class="beneficiary-name">{{ transaction['beneficiary-name'] }}</div>
     <div class="date">{{ transaction.date }}</div>
     <button
-      class="description"
-    
-      [ngClass]="{ 'fixed': transaction.catcode }"
-      (click)="navigateToCategorization()">
-      {{ transaction.category ? transaction?.category?.name : 'Add category' }}
-    </button>
+  class="description"
+  [ngClass]="{ 'fixed': transaction.catcode }"
+  (click)="navigateToCategorization()">
+  {{ selectedCategories.length > 0 ? selectedCategories.join(', ') : 'Add category' }}
+</button>
   </div>
   <div class="transaction-right">
     <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
