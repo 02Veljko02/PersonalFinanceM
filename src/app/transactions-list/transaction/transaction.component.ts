@@ -20,6 +20,9 @@ export class TransactionComponent {
     localStorage.setItem("transactionId", this.transaction.id);
     this.router.navigate(['categorization']);
   }
+  navigateToSplit() {
+    this.router.navigate(['split']);
+  }
 
   onCheckboxChange(event: Event) {
     const input = event.target as HTMLInputElement;

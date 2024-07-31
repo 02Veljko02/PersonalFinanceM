@@ -77,9 +77,7 @@
   }
   
   .description.fixed {
-    /* stilovi za fiksno dugme */
-    cursor: not-allowed;
-    background-color: #4dc6e3; /* ili bilo koja boja za onemogućeno dugme */
+    background-color: #4dc6e3; 
   }
 
   .transaction-checkbox {
@@ -88,4 +86,16 @@
     margin-top: 50px;
   }
   
-  
+  .split-transaction {
+    background-color: #4dc6e3;
+    color: #fff;
+    font-size: 11px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 5px;
+    height: 25px; 
+    display: flex; 
+    align-items: center;
+    border: none;
+    cursor: pointer;
+  }

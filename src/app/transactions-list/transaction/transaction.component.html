@@ -15,7 +15,7 @@
     <div class="date">{{ transaction.date }}</div>
     <button
       class="description"
-      [disabled]="transaction.catcode"
+    
       [ngClass]="{ 'fixed': transaction.catcode }"
       (click)="navigateToCategorization()">
       {{ transaction.category ? transaction?.category?.name : 'Add category' }}
@@ -24,5 +24,8 @@
   <div class="transaction-right">
     <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
     <div class="kind">{{ transaction.kind }}</div>
+    <button class="split-transaction" (click)="navigateToSplit()">
+    Split Transaction
+  </button>
   </div>
 </div>
