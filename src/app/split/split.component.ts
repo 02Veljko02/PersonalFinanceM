@@ -44,14 +44,15 @@ export class SplitCategorizationComponent implements OnInit {
         this.transactionId = transaction.id;
         this.transaction = transaction; // Učitajte celu transakciju
     });
-  
+
     this.apiService.getCategories().subscribe(
-      (data: { items: Categorization[] }) => {
-        this.categories = data.items;
-        this.mainCategories = this.categories.filter(cat => !cat['parent-code']);
-      }
+        (data: { items: Categorization[] }) => {
+            this.categories = data.items;
+            this.mainCategories = this.categories.filter(cat => !cat['parent-code']);
+            this.addNewCategorySection(); // Dodaj jedan deo kategorije kada se podaci učitaju
+        }
     );
-  }
+}
 
   onCategoryChange(index: number) {
     const selectedMainCategory = this.categorySections[index].mainCategory;

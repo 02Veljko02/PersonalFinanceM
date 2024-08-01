@@ -9,7 +9,10 @@
                     Transaction ID: {{ transactionId }}
                 </ng-container>
                 <ng-template #removeButton>
-                    <button type="button" (click)="removeCategorySection(i)">Remove this category</button>
+                    <!-- Prikazuj dugme za uklanjanje samo za sekcije sa indeksom > 1 -->
+                    <ng-container *ngIf="i > 1">
+                        <button type="button" (click)="removeCategorySection(i)">Remove this category</button>
+                    </ng-container>
                 </ng-template>
             </div>
             <div class="dropdowns">
