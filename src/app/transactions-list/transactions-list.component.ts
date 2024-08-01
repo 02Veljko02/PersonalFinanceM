@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TransactionsListComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
+  originalTransactions: Transaction[] = []; // Sačuvajte originalne transakcije
   categories: Categorization[] = [];
   selectedTransactionIds: Set<string> = new Set();
   isSelectingMultipleTransactions: boolean = false;
@@ -67,12 +68,14 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
     
     if (storedTransactions) {
       this.transactions = JSON.parse(storedTransactions);
+      this.originalTransactions = [...this.transactions]; // Sačuvajte originalne transakcije
       this.transactions = this.assignCategoriesToTransactions(this.transactions);
       this.updatePagination();
     } else {
       this.apiService.getTransactions().subscribe(
         (data: any) => {
           this.transactions = data.items.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+          this.originalTransactions = [...this.transactions]; // Sačuvajte originalne transakcije
           localStorage.setItem('transactions', JSON.stringify(this.transactions));
           this.transactions = this.assignCategoriesToTransactions(this.transactions);
           this.updatePagination();
@@ -137,13 +140,15 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
   }
 
   applyFilter() {
-    this.transactions = this.transactions.filter(transaction => 
+    this.transactions = this.originalTransactions.filter(transaction => 
       this.filterValue === '' || transaction.kind === this.filterValue
     );
     this.updatePagination();
   }
+
   clearFilters() {
     this.filterValue = '';
-    this.loadTransactions(); // Ponovno učitaj transakcije bez filtera
+    this.transactions = [...this.originalTransactions]; // Vratite originalne transakcije
+    this.updatePagination();
   }
 }
