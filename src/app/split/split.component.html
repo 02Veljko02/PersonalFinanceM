@@ -23,7 +23,7 @@
                             {{ mainCategory.name }}
                         </option>
                     </select>
-                    <label for="subcategory">Subcategory:</label>
+                    <label for="subcategory">Subcategory (optional):</label>
                     <select id="subcategory-{{i}}" name="subcategory" [(ngModel)]="categorySection.subcategory">
                         <option *ngFor="let subcat of subcategories[i]" [value]="subcat.code">
                             {{ subcat.name }}

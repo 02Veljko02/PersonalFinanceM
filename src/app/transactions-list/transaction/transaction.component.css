@@ -59,7 +59,7 @@
 }
 
 .description {
-  background-color: #4dc6e3;
+  background-color: #4dc6e3; /* Originalna boja kada je kategorija dodata */
   color: #fff;
   font-size: 11px;
   padding: 5px;
@@ -69,6 +69,12 @@
   display: flex; 
   align-items: center;
 }
+
+.description.add-category {
+  background-color: #d3d3d3; /* Siva boja za dugme kada nije dodata kategorija */
+  color: black; /* Boja teksta za sivo dugme */
+}
+
 
 .empty-div {
   background-color: #fff; /* Postavlja pozadinu na belu */
