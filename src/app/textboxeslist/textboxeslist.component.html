@@ -17,23 +17,4 @@
             Categorization rules
         </a>
     </div>
-    
-    <div class="select-menu">
-        <label for="select-dropdown">TRANSACTION KIND:</label>
-        <div class="dropdown">
-          <a id="select-dropdown" class="link dropdown-toggle" (click)="toggleDropdown()">
-            {{ selectedOption }}
-          </a>
-          <div class="dropdown-content" [class.show]="isDropdownOpen">
-            <a (click)="selectOption($event, 'Payement')">Payement</a>
-            <a (click)="selectOption($event, 'Deposite')">Deposite</a>
-            <a (click)="selectOption($event, 'Fee')">Fee</a>
-          </div>
-        </div>
-    </div>
-    
-    <div class="filter">
-        <button class="filter-transaction">Filter Transaction</button>
-        <button class="clear" (click)="clearDropdown()">Clear Transaction</button>
-    </div>
 </div>
