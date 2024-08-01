@@ -26,7 +26,13 @@
                     </option>
                 </select>
                 <label for="amount">Enter amount:</label>
-                <input type="text" id="amount-{{i}}" name="amount" [(ngModel)]="categorySection.amount">
+                <input type="text" id="amount-{{i}}" name="amount" [(ngModel)]="categorySection.amount" (ngModelChange)="onAmountChange()">
+                <!-- Difference section -->
+                <div class="difference">
+                    <ng-container *ngIf="i === categorySections.length - 1 && categorySection.difference">
+                        {{ categorySection.difference }}
+                    </ng-container>
+                </div>
             </div>
         </div>
         <button type="button" (click)="addNewCategorySection()">Add new category</button>

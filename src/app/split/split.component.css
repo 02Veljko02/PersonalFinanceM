@@ -89,3 +89,8 @@ button[type="button"] {
     opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
     cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
   }
+  .difference {
+    margin-top: 5px;
+    color: red; /* Ili druga boja za razliku */
+    font-size: 12px;
+  }
