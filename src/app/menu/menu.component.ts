@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu.component.css'],
   standalone: true
 })
-export class MenuComponent { }
+export class MenuComponent {
+  constructor(private router: Router) {}
+
+  navigateToMain() {
+    this.router.navigate(['/']); 
+  }
+}

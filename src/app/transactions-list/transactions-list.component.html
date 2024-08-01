@@ -40,7 +40,7 @@
   </div>
 
   <div class="inner-div categorize">
-    <button class="categorize-textbox" (click)="toggleSelectionMode()">
+    <button *ngIf="!isSelectingMultipleTransactions" class="categorize-textbox" (click)="toggleSelectionMode()">
       Categorize multiple transactions
     </button>
     <div *ngIf="isSelectingMultipleTransactions" class="multiple-selection-info">
