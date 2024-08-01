@@ -82,14 +82,15 @@
 
   <div class="filter-div">
     <div class="filter-title">Filter:</div>
-    <select class="filter-dropdown">
-      <option value="Payment">Payment</option>
-      <option value="Deposit">Deposit</option>
-      <option value="Fee">Fee</option>
+    <select class="filter-dropdown" [(ngModel)]="filterValue">
+      <option value="" disabled selected></option>
+      <option value="pmt">Payment</option>
+      <option value="dep">Deposit</option>
+      <option value="fee">Fee</option>
     </select>
     <div class="filter-buttons">
-      <button class="filter-button">Filter Transactions</button>
-      <button class="clear-button">Clear Filters</button>
+      <button class="filter-button" (click)="applyFilter()">Filter Transactions</button>
+      <button class="clear-button" (click)="clearFilters()">Clear Filters</button>
     </div>
   </div>
   

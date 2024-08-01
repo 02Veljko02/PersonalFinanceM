@@ -7,11 +7,12 @@ import { SharedService } from '../../services/shared.service';
 import Transaction from '../models/transaction';
 import Categorization from '../models/categorization';
 import { Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-transactions-list',
   standalone: true,
-  imports: [CommonModule, TransactionComponent],
+  imports: [CommonModule, TransactionComponent, FormsModule],
   templateUrl: './transactions-list.component.html',
   styleUrls: ['./transactions-list.component.css']
 })
@@ -25,6 +26,7 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
   itemsPerPage: number = 5;
   totalPages: number = 1;
   paginatedTransactions: Transaction[] = [];
+  filterValue: string = '';
 
   constructor(
     private apiService: ApiService, 
@@ -132,5 +134,16 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
       this.currentPage++;
       this.paginateTransactions();
     }
+  }
+
+  applyFilter() {
+    this.transactions = this.transactions.filter(transaction => 
+      this.filterValue === '' || transaction.kind === this.filterValue
+    );
+    this.updatePagination();
+  }
+  clearFilters() {
+    this.filterValue = '';
+    this.loadTransactions(); // Ponovno učitaj transakcije bez filtera
   }
 }
