@@ -5,8 +5,24 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './textboxeslist.component.html',
-  styleUrl: './textboxeslist.component.css'
+  styleUrls: ['./textboxeslist.component.css']
 })
 export class TextboxeslistComponent {
+  selectedOption = 'Select an option';
+  isDropdownOpen = false;
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selectOption(event: Event, option: string) {
+    event.preventDefault(); // Sprečava podrazumevano ponašanje linka
+    this.selectedOption = option;
+    this.isDropdownOpen = false;
+  }
+
+  clearDropdown() {
+    this.selectedOption = 'Select an option';
+    this.isDropdownOpen = false;
+  }
 }

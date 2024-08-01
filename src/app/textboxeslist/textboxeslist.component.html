@@ -40,53 +40,22 @@
 
 
     
-<div class="custom-menu">
-  <a class="link">
-    TRANSACTION TYPE:
-  </a>
-  <div class="dropdown">
-    <a class="link">
-      Expenses
-    </a>
-    <div class="dropdown-content">
-      <a>Expenses</a>
+    <div class="select-menu">
+        <label for="select-dropdown">Select:</label>
+        <div class="dropdown">
+          <a id="select-dropdown" class="link dropdown-toggle" (click)="toggleDropdown()">
+            {{ selectedOption }}
+          </a>
+          <div class="dropdown-content" [class.show]="isDropdownOpen">
+            <a (click)="selectOption($event, 'Payement')">Payement</a>
+            <a (click)="selectOption($event, 'Deposite')">Deposite</a>
+            <a (click)="selectOption($event, 'Fee')">Fee</a>
+          </div>
+        </div>
     </div>
-  </div>
-  <a class="link">
-    FILTER BY ACCOUNT:
-  </a>
-  <div class="dropdown">
-    <a class="link">
-      All accounts
-    </a>
-    <div class="dropdown-content">
-      <a>All accounts</a>
-    </div>
-  </div>
-</div>
-
-<div class="serching">
-    <a class="beneficiary">
-        BENEFICIARY:
-    </a>
-    <a class="search">
-        Enter beneficiary
-        <img src="assets/images/search.png" alt="Search" />
-    </a>
-    <a class="border-bottom">
-
-    </a>
-</div>
     
-<div class="filter">
-    <div class="filter-transaction">
-        Filter Transactions
+    <div class="filter">
+        <button class="filter-transaction">Filter Transaction</button>
+        <button class="clear" (click)="clearDropdown()">Clear Transaction</button>
     </div>
-</div>
-<div class="filter">
-    <div class="clear">
-        Clear selection
-    </div>
-</div>
-    
 </div>
