@@ -92,6 +92,7 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
       category: categoryMap.get(transaction.catcode) || undefined,
     }));
   }
+  
 
   handleTransactionSelection(event: { id: string, checked: boolean }) {
     if (event.checked) {
@@ -143,12 +144,22 @@ export class TransactionsListComponent implements OnInit, OnDestroy {
     this.transactions = this.originalTransactions.filter(transaction => 
       this.filterValue === '' || transaction.kind === this.filterValue
     );
+    this.transactions = this.assignCategoriesToTransactions(this.transactions);
     this.updatePagination();
   }
-
+  
+  
   clearFilters() {
     this.filterValue = '';
-    this.transactions = [...this.originalTransactions]; // Vratite originalne transakcije
+  
+    // Vratite originalne transakcije
+    this.transactions = [...this.originalTransactions];
+  
+    // Ponovo učitajte kategorije ako je potrebno
+    this.transactions = this.assignCategoriesToTransactions(this.transactions);
+  
+    // Ažurirajte paginaciju nakon vraćanja svih transakcija
     this.updatePagination();
   }
+  
 }
