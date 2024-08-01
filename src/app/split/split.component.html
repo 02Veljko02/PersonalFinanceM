@@ -3,45 +3,47 @@
         <div class="categorization-header">
             Choose category:
         </div>
-        <div class="categorization-content" *ngFor="let categorySection of categorySections; let i = index">
-            <div class="white-background-text">
-                <ng-container *ngIf="i === 0; else removeButton">
-                    Transaction ID: {{ transactionId }}
-                </ng-container>
-                <ng-template #removeButton>
-                    <!-- Prikazuj dugme za uklanjanje samo za sekcije sa indeksom > 1 -->
-                    <ng-container *ngIf="i > 1">
-                        <button type="button" (click)="removeCategorySection(i)">Remove this category</button>
+        <div class="categorization-content">
+            <div class="category-section-wrapper" *ngFor="let categorySection of categorySections; let i = index">
+                <div class="white-background-text">
+                    <ng-container *ngIf="i === 0; else removeButton">
+                        This is the transaction ID: {{ transactionId }}
                     </ng-container>
-                </ng-template>
-            </div>
-            <div class="dropdowns">
-                <label for="category">Category:</label>
-                <select id="category-{{i}}" name="category" [(ngModel)]="categorySection.mainCategory" (change)="onCategoryChange(i)">
-                    <option *ngFor="let mainCategory of mainCategories" [value]="mainCategory.code">
-                        {{ mainCategory.name }}
-                    </option>
-                </select>
-                <label for="subcategory">Subcategory:</label>
-                <select id="subcategory-{{i}}" name="subcategory" [(ngModel)]="categorySection.subcategory">
-                    <option *ngFor="let subcat of subcategories[i]" [value]="subcat.code">
-                        {{ subcat.name }}
-                    </option>
-                </select>
-                <label for="amount">Enter amount:</label>
-                <input type="text" id="amount-{{i}}" name="amount" [(ngModel)]="categorySection.amount" (ngModelChange)="onAmountChange()">
-                <!-- Difference section -->
-                <div class="difference">
-                    <ng-container *ngIf="i === categorySections.length - 1 && categorySection.difference">
-                        {{ categorySection.difference }}
-                    </ng-container>
+                    <ng-template #removeButton>
+                        <!-- Prikazuj dugme za uklanjanje samo za sekcije sa indeksom > 1 -->
+                        <ng-container *ngIf="i > 1">
+                            <button type="button" (click)="removeCategorySection(i)">- Remove this category</button>
+                        </ng-container>
+                    </ng-template>
+                </div>
+                <div class="dropdowns">
+                    <label for="category">Category:</label>
+                    <select id="category-{{i}}" name="category" [(ngModel)]="categorySection.mainCategory" (change)="onCategoryChange(i)">
+                        <option *ngFor="let mainCategory of mainCategories" [value]="mainCategory.code">
+                            {{ mainCategory.name }}
+                        </option>
+                    </select>
+                    <label for="subcategory">Subcategory:</label>
+                    <select id="subcategory-{{i}}" name="subcategory" [(ngModel)]="categorySection.subcategory">
+                        <option *ngFor="let subcat of subcategories[i]" [value]="subcat.code">
+                            {{ subcat.name }}
+                        </option>
+                    </select>
+                    <label for="amount">Enter amount:</label>
+                    <input type="text" id="amount-{{i}}" name="amount" [(ngModel)]="categorySection.amount" (ngModelChange)="onAmountChange()">
+                    <!-- Difference section -->
+                    <div class="difference">
+                        <ng-container *ngIf="i === categorySections.length - 1 && categorySection.difference">
+                            {{ categorySection.difference }}
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
-        <button type="button" (click)="addNewCategorySection()">Add new category</button>
+        <button type="button" (click)="addNewCategorySection()">+ Add new category</button>
         <div class="categorization-footer">
             <button type="button" class="cancel" (click)="backToMain()">Cancel</button>
-            <button type="button" (click)="applyCategory()" [disabled]="!isFormValid()">Apply</button>
+            <button type="button" class="apply" (click)="applyCategory()" [disabled]="!isFormValid()">Apply</button>
         </div>
     </div>
 </div>

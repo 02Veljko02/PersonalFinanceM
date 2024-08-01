@@ -7,13 +7,14 @@
 }
 
 .categorization-box {
-    width: 300px; /* Adjust width as needed */
-    border: 1px solid black;
+    width: 500px; /* Adjust width as needed */
+    
     display: flex;
     flex-direction: column;
     padding: 10px;
     margin-bottom: 10px;
     position: relative; /* Add relative positioning for header positioning */
+    background-color: white;
 }
 
 .categorization-header {
@@ -37,24 +38,45 @@
     margin-top: 40px; /* Adjust margin to avoid overlap with header */
 }
 
+.category-section-wrapper {
+    width: 100%; /* Full width of the parent */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px; /* Optional: rounded corners */
+    
+}
+
 .white-background-text {
     text-align: center;
     padding: 5px 0;
     width: 100%;
     color: #4dc6e3;
-    font-size: 10px;
+    font-size: 15px;
 }
 
 .dropdowns {
     margin-top: 10px;
 }
 
-.dropdowns label,
-.dropdowns select,
+.dropdowns select{
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #4dc6e3;
+    color: white;
+}
+.dropdowns label{
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #4dc6e3;
+}
 .dropdowns input {
     display: block;
     width: 100%;
     margin-bottom: 5px;
+    background-color: #4dc6e3;
+    color: white;
 }
 
 .categorization-footer {
@@ -65,32 +87,44 @@
 }
 
 .categorization-footer button {
-    width: 45%;
-    padding: 5px 0;
-    background-color: #4dc6e3;
-    color: white;
+    flex: 1; /* Da oba dugmeta zauzmu jednaku širinu */
+    padding: 10px;
     border: none;
+    color: white;
     cursor: pointer;
+    box-sizing: border-box; /* Uključi padding u ukupnu širinu dugmeta */
 }
 
 .categorization-footer button.cancel {
-    background-color: red; /* Set the cancel button to red */
+    background-color: red; /* Boja pozadine za dugme Cancel */
+    
 }
 
 button[type="button"] {
     margin-top: 10px;
     width: 100%;
-    background-color: #4dc6e3;
-    color: white;
+    color: #4dc6e3;
     border: none;
     cursor: pointer;
+    background-color: white;
 }
+
 .categorization-footer button:disabled {
     opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
     cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
-  }
-  .difference {
+}
+.categorization-footer button.apply {
+    background-color: #4dc6e3; /* Boja pozadine za dugme Apply */
+   
+}
+
+.categorization-footer button:disabled {
+    opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
+    cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
+}
+
+.difference {
     margin-top: 5px;
     color: red; /* Ili druga boja za razliku */
     font-size: 12px;
-  }
+}

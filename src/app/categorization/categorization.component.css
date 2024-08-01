@@ -6,17 +6,14 @@
 }
 
 .categorization-box {
-  width: 200px; /* Početna širina */
-  min-height: 250px; /* Početna visina */
-  border: 1px solid black;
+  width: 500px; /* Početna širina */
+  min-height: 300px; /* Početna visina */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-top: 0; /* Oduzmi padding da header bude uz ivice */
   padding: 10px;
-  box-sizing: border-box; /* Uključi border u ukupnu širinu i visinu */
   position: relative; /* Omogući apsolutno pozicioniranje za header */
-  transition: all 0.3s ease; /* Glatka animacija za promene */;
+  background-color: white;
+  box-sizing: border-box; /* Uključi border u ukupnu širinu i visinu */
 }
 
 .categorization-header {
@@ -30,6 +27,7 @@
   right: 0;
   height: 30px; /* Adjust as needed */
   box-sizing: border-box; /* Uključi padding u visinu */
+  z-index: 1; /* Ensure header is on top of other content */
 }
 
 .categorization-content {
@@ -47,44 +45,74 @@
   padding: 5px 0;
   width: 100%;
   color: #4dc6e3;
-  font-size: 10px; /* Popravi veličinu fonta */
+  font-size: 15px;
 }
 
 .dropdowns {
   margin-top: 10px;
+  width: 100%; /* Osiguraj da dropdowns koristi celu širinu roditelja */
 }
 
-.dropdowns label,
-.dropdowns select {
+.dropdowns label {
   display: block;
   width: 100%;
   margin-bottom: 5px;
+  color: #4dc6e3;
 }
+
+.dropdowns select {
+  display: block;
+  width: 100%; /* Osiguraj da select koristi celu širinu roditelja */
+  margin-bottom: 5px;
+  background-color: #4dc6e3;
+  color: white;
+  border: 1px solid #4dc6e3; /* Dodaj border ako je potrebno */
+  box-sizing: border-box; /* Uključi border i padding u ukupnu širinu */
+}
+
+.dropdowns input {
+  display: block;
+  width: 100%; /* Osiguraj da input koristi celu širinu roditelja */
+  margin-bottom: 5px;
+  background-color: #4dc6e3;
+  color: white;
+  border: 1px solid #4dc6e3; /* Dodaj border ako je potrebno */
+  box-sizing: border-box; /* Uključi border i padding u ukupnu širinu */
+}
+
+
 
 .categorization-footer {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.categorization-footer .cancel-button {
-  width: 45%;
-  padding: 5px 0;
-  background-color: red; /* Boja za Cancel dugme */
-  color: white; /* Tekst boje */
-  border: none; /* Bez bordera */
-  cursor: pointer; /* Pokazivač za klik */
+.categorization-footer button {
+  flex: 1; /* Da oba dugmeta zauzmu jednaku širinu */
+  padding: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  box-sizing: border-box; /* Uključi padding u ukupnu širinu dugmeta */
 }
 
-.categorization-footer .apply-button {
-  width: 45%;
-  padding: 5px 0;
-  background-color: #4dc6e3; /* Boja za Apply dugme */
-  color: white; /* Tekst boje */
-  border: none; /* Bez bordera */
-  cursor: pointer; /* Pokazivač za klik */
+.categorization-footer button.cancel-button {
+  background-color: red; /* Boja pozadine za dugme Cancel */
+}
+
+.categorization-footer button.apply-button {
+  background-color: #4dc6e3; /* Boja pozadine za dugme Apply */
 }
 
 .categorization-footer button:disabled {
   opacity: 0.6; /* Smanji vidljivost za onemogućena dugmad */
   cursor: not-allowed; /* Pokazivač za onemogućena dugmad */
+}
+
+.difference {
+  margin-top: 5px;
+  color: red; /* Ili druga boja za razliku */
+  font-size: 12px;
 }
