@@ -30,7 +30,7 @@
   </div>
   <div class="transaction-right">
     <div class="amount">{{ transaction.amount }} {{ transaction.currency }}</div>
-    <div class="kind">{{ transaction.kind }}</div>
+    <div class="kind">{{ getTransactionKind(transaction.kind) }}</div>
     <button class="split-transaction" (click)="navigateToSplit()">
       Split Transaction
     </button>

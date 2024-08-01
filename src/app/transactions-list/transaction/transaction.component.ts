@@ -63,4 +63,17 @@ export class TransactionComponent implements OnInit, OnDestroy {
     const input = event.target as HTMLInputElement;
     this.checkboxChange.emit({ id: this.transaction.id, checked: input.checked });
   }
+
+  getTransactionKind(kind: string): string {
+    switch (kind) {
+      case 'pmt':
+        return 'Payment';
+      case 'dep':
+        return 'Deposit';
+      case 'fee':
+        return 'Fee';
+      default:
+        return kind;
+    }
+  }
 }
