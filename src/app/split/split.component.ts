@@ -11,7 +11,6 @@ interface CategorySection {
   subcategory: string;
   amount: string;
   difference?: string;
-
 }
 
 @Component({
@@ -44,15 +43,15 @@ export class SplitCategorizationComponent implements OnInit {
         this.transactionId = transaction.id;
         this.transaction = transaction; // Učitajte celu transakciju
     });
-
+  
     this.apiService.getCategories().subscribe(
-        (data: { items: Categorization[] }) => {
-            this.categories = data.items;
-            this.mainCategories = this.categories.filter(cat => !cat['parent-code']);
-            this.addNewCategorySection(); // Dodaj jedan deo kategorije kada se podaci učitaju
-        }
+      (data: { items: Categorization[] }) => {
+        this.categories = data.items;
+        this.mainCategories = this.categories.filter(cat => !cat['parent-code']);
+        this.addNewCategorySection(); // Dodaj jedan deo kategorije kada se podaci učitaju
+      }
     );
-}
+  }
 
   onCategoryChange(index: number) {
     const selectedMainCategory = this.categorySections[index].mainCategory;
@@ -62,7 +61,6 @@ export class SplitCategorizationComponent implements OnInit {
     this.calculateDifferences(); // Dodajte ovo
   }
   
-  // Dodajte i ovu metodu za praćenje promene u iznosu
   onAmountChange() {
     this.calculateDifferences();
   }
@@ -91,7 +89,6 @@ export class SplitCategorizationComponent implements OnInit {
       };
     });
   
-    // Proverite da li ukupni iznos odgovara iznosu transakcije
     const totalAmount = selectedCategories.reduce((sum, cat) => sum + (cat.amount || 0), 0);
     if (this.transactionId && totalAmount === parseFloat(this.transaction.amount)) {
       this.sharedService.setSelectedCategories(this.transactionId, 
@@ -112,21 +109,21 @@ export class SplitCategorizationComponent implements OnInit {
   calculateDifferences() {
     const totalEnteredAmount = this.categorySections.reduce((sum, section) => sum + parseFloat(section.amount || '0'), 0);
     const totalTransactionAmount = parseFloat(this.transaction.amount);
-    
+
     // Reset differences for all sections
     this.categorySections.forEach((section, index) => {
         section.difference = '';
     });
 
-    // Calculate difference for the most recently added section
-    const lastIndex = this.categorySections.length - 1;
-    const lastSection = this.categorySections[lastIndex];
-    const remainingAmount = totalTransactionAmount - totalEnteredAmount + parseFloat(lastSection.amount || '0');
-    
-    lastSection.difference = remainingAmount > 0 ? `Remaining: ${remainingAmount.toFixed(2)}` : `Over: ${Math.abs(remainingAmount).toFixed(2)}`;
-}
-
+    // Check if the first section has an amount entered
+    const firstSection = this.categorySections[0];
+    if (parseFloat(firstSection.amount || '0') > 0) {
+      // Calculate difference for the most recently added section
+      const lastIndex = this.categorySections.length - 1;
+      const lastSection = this.categorySections[lastIndex];
+      const remainingAmount = totalTransactionAmount - totalEnteredAmount + parseFloat(lastSection.amount || '0');
+      
+      lastSection.difference = remainingAmount > 0 ? `Remaining: ${remainingAmount.toFixed(2)}` : `Over: ${Math.abs(remainingAmount).toFixed(2)}`;
+    }
   }
-  
-
-
+}
